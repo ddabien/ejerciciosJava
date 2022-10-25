@@ -1,0 +1,342 @@
+package ejemplopoo
+	public class Auto {
+
+
+// POR CONVENCION VA
+// ATRIBUTOS
+// CONSTRUCTORES
+// GETTER Y SETTERS
+// METODOS
+
+	
+
+// declarando atributos del auto
+	int id;
+	String patente;
+	int cant_puertas;
+	String color;
+	boolean caja_manual;
+
+// constructores
+	public Auto () {
+	}
+	
+	public Auto (int id, String patente, int cant_puertas, String color, boolean caja_manual);
+		this.id = id;
+		this.patente = patente;
+		this.cant_puertas = cant_puertas;
+		this.color = color;
+		this.caja_manual = caja_manual; 
+	}
+	
+// id es una variable lccal solo se puede usarse adentro de estre constructor 
+// variables gloables se pueden usar a lo largo de todo el código
+	
+// getter y setter van antes de los métodos
+// getter and setters
+	// son metodos especiales que represetan funciones(los procedimientos no devuelven valor)
+	// Los getter son funcionan retornan un valor, Ej conocer un id
+	// Puedo setear (es un procedimiento) la Id para que se guarde con el setters
+	// public String toString (muestra )
+	
+	//getter y setters
+
+	//getter y setters los metodos especiales que representan funciones (getter-> retorna valor) o procedimiento 
+(setters le doy las instrucciones (ej le paso el valor q quiere q asigne) -> no devuelve valor
+
+// ejemplo:
+public int getId() {
+	return id;
+}
+
+public void setId(int id) {
+	this.id = id;
+}
+
+public int getPatente() {
+	return patente;
+}
+
+public void setPatente(String patente) {
+	this.patente = patente;
+}
+
+
+//TO STRING 
+//Metodo especial toString --> muestra en pantalla todos los datos de una (VA despues de getter y setter)
+
+//Lo crea automaticamente NetBeans
+@Override
+public String toString (){
+	return 	"Auto{" + id = +
+			", patente" + patente + 
+			",cant_puertas" + cant_puertas + 
+			", color" + color + 
+			",caja_manual" + caja_manual +'}'
+}
+
+
+
+
+	
+//declarar metodos
+	public void encender () {
+		System.out.println ("Estoy encendiendo");
+		
+	}
+		
+	public void apagar (){
+		System.out.println ("Estoy apagando");
+	}
+	
+	public void acelerar(double km) {
+		System.out.println("Estoy acelerando" + km + "kms");
+	}
+	
+	public void frenar(double km) {
+		System.out.println("Estoy frenando" + km + "kms");
+	}
+		
+	
+	
+	
+	
+	
+----------------------------------------------------------------------------
+
+
+DECLARANDO OBJETOS EN OTRA JAVA CLASS Q HAY Q LLAMAR AUTO (A MAYUSCULA)
+
+package ejemplopoo;
+
+
+public class EjemploPOO {
+public static void main (String [] args) {
+	Auto auto1 = new Auto ();
+	Auto auto2 = new Auto (1, "AA111JO", 5, "rojo", true);
+	
+	/*auto2.encender ();
+	auto2.acelerar(60);
+	auto2.frenar(30);
+	auto2.apagar();*/
+	
+}
+
+----------------------------------------------------------------------------
+
+
+	System.out.println("El valor de la id es" + auto2.getId());
+	
+	//setter del nuevo Id
+	
+	auto2.setId(35000);
+	
+	System.out.println("El NUEVO valor de la id es" + auto2.getId());
+	
+
+ 
+
+
+	System.out.println("El valor de la id es" + auto1.getId());
+	//me daria cero pq lo cree vacio
+	// le pongo el dato x setter
+	auto1.setId(1500)
+	auto1.setPatente(AB500XS)
+	auto1.setColor("amarillo")
+	auto1.setCaja_manual(false);
+	
+	
+
+System.out.println("El valor de la id es" + auto1.getId());
+// me va a aparecer 1500
+
+
+El metodo toString se llama de la siguiente forma:
+
+	System.out.println(auto2.toString());
+	
+
+----------------------------------------------------------------------------
+
+SEGUNDA PARTE:
+- ENCAPSULAMIENTO: encapsulo parte del código que permite el acceso a determinadas partes. 
+tenemos acceso a los metodos y atributos, el acceso es por niveles. 
+Partes de nuestro codigo dentro de una clase pueda ser visto o utilizado de acuerdo al nivel de acceso.
+*Define 3 tipos de acceso o niveles:
+	Privado
+	Publico
+	Protegido
+
+	El publico ya lo vimos arriba (esto se puede ver desde cualquier lugar del codigo)
+	
+	
+	El privado es el mal alto nivel del encapsulamiento y solo puede ser accedido dentro de la clase
+	
+	Ej: 
+	// declarando atributos del auto
+	prvate int id;
+	private String patente;
+	private int cant_puertas;
+	private String color;
+	private boolean caja_manual;
+ 	
+	Hace que solo se pueda acceder dentro de esta clase;
+	
+	si es publico yo podria acceder a esta clase desde otra, ej main
+		Si intentaria y getId estaria en "privado" no me dejaria accederla
+		Ej: private int getID (); 
+			return id;
+
+	Los getter y setters son publicos por defecto
+
+* PROTEGIDO::
+	permite hacer una combinacion con herencia
+	Permite que vea la clase donde estoy parado y los hijos o derivados podran acceder	
+	Ej. Vehiculo tiene un atributo protegio, auto va a poder acceder a este atributo (si es privado no va a poder acceder)
+			
+
+- OCULTAMIENTO: codigo privado y cerrado y no hay forma de accederlo
+
+- HERENCIA:
+*Si existe un padre un hijo va a tener caracteristicas del padre
+*yo puedo tener una clase padre que va tener atributos y metodos cada hijo va a poder heredar y a parte va a tener 
+atributos y metodos que lo diferencias de sus hermanas
+
+Creo la clase vehiculo en netbeans
+	package ejemplopoo;
+	public class Vehiculo {
+		int numero_registro;
+		int cantidad_ruedad;
+		String marca;
+		String modelo;
+		
+		public Vehiculo ();{
+	}
+		
+		
+		
+		public Vehiculo(int num_registro, int cant_ruedas, String marca, String modelo) {
+				this.num_registro = num_registro;
+				this.cant_ruedas = cant_ruedas;
+				this.marca = marca;
+				this.modelo = modelo;
+	}
+		
+		
+		//getter y setters
+		
+		public int getNum_registro() {
+			return num_registro;
+		}
+		
+		public void setNum_registro (int num_registro) {
+			this.num_registro = num_registro
+		}
+		
+		
+		
+		---
+		
+		public void estacionar () {
+			System.out.println("Estoy estacionado");
+			
+
+		}
+		
+		
+	}
+	
+	
+	
+	VOY A LA CLASE CAMION!!!!!!!!!!!!!!!!!!
+	
+	tiene q heredar de vehiculo <-----------------------------------------
+	
+	public class Camion extends Vehiculo {
+		//puede tener sus propias caracteristicas ....
+		
+		int cant_ejes;
+		boolean acoplado;
+		
+	SI QUISIERA PONERLE UN CONSTRUCTOR me va a aparecer al queres contruir con netbeans el constructor
+	todos los atributos EJ:
+	
+	public Camion;
+	
+	public Camion (int cant_ejes, boolean acoplado, int num_registro, int cant_ruedas, String marca, String modelo) {
+		super(num_registro, cant_ruedad, marca, modelo) <-------------- OJOOOOOO "super" a mi padre HERENCIA
+		this.cant_ejes = cant_ejes;
+		this.acoplado = acoplado; 
+	
+	}
+	// Se crean los getter y setters ...... si los creo TODOS pasa estooo::_
+	
+	Son varios.......... 
+	
+	y va a aparecer una advertencia de "Override" hay que eliminar los q sugieran Override porq implica sobreescritura
+	OJOOOOOO
+	
+	// lo que conviene al crear getter y setter marcar solo los de camiones y aparece la herencia que corresponde 
+	
+
+	otro ejemplo;
+	
+	Auto 
+	
+	Creo un JAVACLASS para MOTO 
+	
+	
+	Si pongo que auto extiende de vehiculo debo modificar el constructor;
+	
+	public class auto extends vehiculo;
+	 ....
+	 
+	 
+	 
+
+
+- POLIMORFISMO:
+*que nos dice que cuando hay una clase padre que tiene distintos hijos q depende de ella, si creo un objeto 
+
+Ej clase madre vehiculo-> hijos auto camion moto 
+si tengo un vector vehiculo puedo asignar otros dentro 
+
+
+Ej: 
+	
+	Vehiculo vehi = new (56789, 4, "Renault", "indefinido");
+	
+	Auto auto2 = new Auto (1, "AA23SS", 5, "rojo", true, 65324, 4, Volkswagen", "gol");	
+	Moto moto = new Moto (125,15698, 2, "yamaha", "ZR125");
+	Camion cami1 = new Camion (6, true, 698Y45, 6, "mercedes", "1114");
+	
+	POLIMORFISMO SON MUCHAS FORMAS, tienen algunas partes en comun 
+	
+	Tanto auto, moto y camion heredan son clases hermanas ... eso quiere decir que el objeto vehiculo podria
+	asignarle 
+	
+	
+	//Creo un vector que puede guardar 4 vehiculos
+	Vehiculo vector [] = new Vehiculo [4];
+	vector [0] = vehi;
+	vector [1] = auto2;
+	vector [2] = moto;
+	vector [3] = camion;
+	
+	Sucede pq se aplica el polimorfismo ya q tienen una base en comun la clase padre vehiculo!!!!!!!!!
+	
+	Recorro el vector;
+	
+	for (int=0; i>4, i++) {
+		System.out.println ("Registro N°" + i + vector [i].getMarca());
+	}
+	
+	ABSTRACCION es traer el mundo real al codigo!!!!
+	Modificadores de acceso: encampsulamiento
+	
+	HERENCIA
+	POLIMORFISMO
+	
+	
+	
+	
